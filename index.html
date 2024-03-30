@@ -1,13 +1,368 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style>
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 100;
+            src: url('Doran-Thin.woff') format('woff'),
+            url('Doran-Thin.woff2') format('woff2');
+        }
 
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 300;
+            src: url('Doran-Light.woff') format('woff'),
+            url('Doran-Light.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: normal;
+            src: url('Doran-Regular.woff') format('woff'),
+            url('Doran-Regular.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 500;
+            src: url('Doran-Medium.woff') format('woff'),
+            url('Doran-Medium.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: bold;
+            src: url('Doran-Bold.woff') format('woff'),
+            url('Doran-Bold.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 800;
+            src: url('Doran-ExtraBold.woff') format('woff'),
+            url('Doran-ExtraBold.woff2') format('woff2');
+        }
+
+
+        body {
+            font-family: Doran, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #330066;
+            color: white;
+            text-align: center;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        .container {
+            /*padding: 100px;*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
+            width: 100vw;
+            /*background-color: #97d27b;*/
+        }
+
+        .button-row {
+            padding: 20px;
+            padding-right: 100px;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            color: #ff7d59;
+            font-family: Doran, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            border-radius: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .logo {
+            margin: 50px;
+        }
+
+        /* Slide 2 */
+        .page2 {
+            background-color: #ff7d59;
+            color: white;
+            padding: 50px;
+            font-size: 18px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+
+        .sub-page2 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide2-body-sub-text {
+            font-size: 40px;
+            text-align: justify-all;
+            direction: rtl;
+            color: #33006b;
+            font-family: Doran, sans-serif;
+            width: 30vw;
+        }
+
+        .subtitle {
+            font-size: 45px; /* You should adjust this size to match your design */
+            margin-bottom: 16px;
+            color: #33006b;
+            font-family: Doran, sans-serif;
+        }
+
+        /*p {*/
+        /*margin-bottom: 16px; !* Spacing between paragraphs *!*/
+        /*color: #33006b;*/
+        /*}*/
+
+        .slide2-body-text {
+            font-size: 30px;
+            text-align: justify-all;
+            direction: rtl;
+            color: #33006b;
+            font-family: Doran, sans-serif;
+            width: 60vw;
+        }
+
+        /* Slide 3 */
+        .page3 {
+            background-color: #33006b;
+            color: white;
+            padding: 50px;
+            font-size: 18px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+
+        .sub-page3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .slide3-body-text {
+            margin: 10px;
+            font-size: 30px;
+            text-align: justify-all;
+            direction: rtl;
+            color: white;
+            font-family: Doran, sans-serif;
+            width: 70vw;
+        }
+
+        /* Slide 4 */
+        .page4 {
+            background-color: #33006b;
+            color: white;
+            /*padding: 50px;*/
+            /*font-size: 18px;*/
+            /*height: 100vh;*/
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .page4-bg {
+            /*height: 100vh;*/
+            width: 100vw;
+        }
+
+        /* Slide 5 */
+        .page5 {
+            background-color: #ff7d59;
+            color: #33006b;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: url('Logo@4xSlide5.png');
+            background-repeat: no-repeat;
+            /*background-attachment: fixed;*/
+            background-size: cover;
+        }
+
+        .page5-p {
+            margin-top: 300px;
+            font-size: 80px;
+            text-align: justify-all;
+            direction: rtl;
+            color: #33006b;
+            font-family: Doran, sans-serif;
+            font-weight: bolder;
+            /*width: 70vw;*/
+        }
+
+        .footer {
+            background-color: #33006b;
+            color: white;
+            height: 200px;
+            width: 100vw;
+            /*padding-right: 100px;*/
+            /*padding-left: 100px;*/
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 200px;
+            height: auto;
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+
+        .footer-labels {
+            direction: rtl;
+            /*margin-top: 300px;*/
+            font-size: 20px;
+            text-align: right;
+            color: white;
+            font-family: Doran, sans-serif;
+            font-weight: bolder;
+            /*width: 70vw;*/
+        }
+
+        .social-img {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        .footer-socials-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+
+
+        /* Add your CSS for the logo and other elements here */
+        /* Use a web-safe font or import a custom Arabic typeface */
+    </style>
+</head>
 <body>
-    <h1></h1>
+
+<!-- Page 1 -->
+<div class="button-row">
+    <button class="button">خانه</button>
+    <button class="button">ثبت سفارش</button>
+    <!--    <button class="button">Services</button>-->
+    <!--    <button class="button">Contact</button>-->
+</div>
+
+<div class="container">
+    <div class="logo">
+        <!-- You can place an img tag here with the path to your logo image -->
+        <img src="Type@4x.png" alt="Logo" width="500px">
+    </div>
+</div>
+
+<!-- Page 2 -->
+<div class="page2">
+    <div class="sub-page2">
+        <p class="slide2-body-text">دیدن رنگ سرخ رژ لب روی لبها، دیدن زیبایی چشمها بعد از آرایش، فریاد شادی بعد از رسیدن
+            یک بسته‌ی پر از لوازم آرایش، خوشی همراه با درد پیچیده در ساق پا بعد از یک رقص طولانی. شادی همین قدر واقعی و
+            همین قدر ساده است.</p>
+        <div class="slide2-body-sub-text">خرید لوازم آرایش اصل از منحنی نقطه‌ی شروع این شادی است.</div>
+    </div>
+    <div class="sub-page2">
+        <img src="Type@4xPlain.png" alt="Logo" width="400px">
+        <div class="subtitle">نقطه شروع شادی است</div>
+    </div>
+</div>
+
+<!-- Page 3 -->
+<div class="page3">
+    <div class="sub-page3">
+        <p class="slide3-body-text">شادی یک منحنی است.</p>
+        <p class="slide3-body-text">منحنی یک لبخند بیاراده،</p>
+        <p class="slide3-body-text">منحنی یک موی پیچ و تاب خورده روی پیشانی،</p>
+        <p class="slide3-body-text">یک منحنی از انتظار تا شوق تا ذوق تا تبسم،</p>
+        <p class="slide3-body-text">یک منحنی از پایین ترن هوایی تا اوج تا بازگشت،</p>
+        <p class="slide3-body-text">قصه‌ی شادی، قصه‌ی پر پیچ و تاب منحنی است.</p>
+    </div>
+</div>
+
+
+<!-- Page 4 -->
+<div class="page4">
+    <img class="page4-bg" src="MonhaniSlide4.png" alt="background">
+</div>
+
+<!-- Page 5 -->
+<div class="page5">
+    <p class="page5-p">
+        شادی ارزشش را دارد
+    </p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <div>
+        <p class="footer-labels">منحنی در شبکه‌های اجتماعی:</p>
+        <div class="footer-socials-row">
+            <a href="https://t.me/MonhaniSupport">
+                <img class="social-img" src="telegram.png" alt="telegram social media"/>
+            </a>
+            <a href="https://instagram.com/Monhani.beauty">
+                <img class="social-img" src="instagram.png" alt="instagram social media"/>
+            </a>
+        </div>
+    </div>
+    <img class="footer-logo" src="Type@4x.png" alt="Logo">
+</div>
+
 
 </body>
-
 </html>
