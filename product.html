@@ -517,11 +517,8 @@
                 // fetch("https://jsonplaceholder.typicode.com/todos/1"),
                 fetch("https://api.zarinpal.com/pg/v4/payment/request.json", {
                     method: "POST",
-                    mode: 'cors',
                     headers: {
                         Accept: '*/*',
-                        'Origin': 'http://localhost',
-                        "Access-Control-Allow-Origin": true
                     },
                     body: {
                         "merchant_id": merchant_id,
