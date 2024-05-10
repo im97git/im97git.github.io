@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منحنی - شادی ارزشش را دارد</title>
+    <style>
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 100;
+            src: url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff/Doran-Thin.woff') format('woff'),
+            url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff2/Doran-Thin.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 300;
+            src: url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff/Doran-Light.woff') format('woff'),
+            url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff2/Doran-Light.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: normal;
+            src: url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff/Doran-Regular.woff') format('woff'),
+            url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff2/Doran-Regular.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 500;
+            src: url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff/Doran-Medium.woff') format('woff'),
+            url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff2/Doran-Medium.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: bold;
+            src: url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff/Doran-Bold.woff') format('woff'),
+            url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff2/Doran-Bold.woff2') format('woff2');
+        }
+
+        @font-face {
+            font-family: Doran;
+            font-style: normal;
+            font-weight: 800;
+            src: url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff/Doran-ExtraBold.woff') format('woff'),
+            url('Monhani Graphic Assets/Type/Doran Family/Webfonts/fonts/woff2/Doran-ExtraBold.woff2') format('woff2');
+        }
+
+
+        body {
+            font-family: Doran, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #33006b;
+            color: white;
+            text-align: center;
+        }
+
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+
+        ::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        body {
+            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .button-row {
+            padding: 20px;
+            padding-right: 100px;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            color: #ff7d59;
+            font-family: Doran, sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            border-radius: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .container {
+            /*padding: 100px;*/
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
+            width: 100vw;
+            /*background-color: #97d27b;*/
+        }
+
+        .right-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 95vh;
+            width: 50vw;
+        }
+
+        .left-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            height: 95vh;
+            width: 50vw;
+        }
+
+        .product-img {
+            width: 15vw;
+            height: auto;
+            margin-left: 10px;
+        }
+
+        .product-info-col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-end;
+            /*height: 95vh;*/
+            /*width: 70vw;*/
+            width: 50vw;
+            padding: 10px;
+        }
+
+        .product-info-brand {
+            direction: rtl;
+            /*margin-top: 300px;*/
+            font-size: 25px;
+            text-align: right;
+            color: #ff7d59;
+            font-family: Doran, sans-serif;
+            font-weight: bolder;
+            /*width: 70vw;*/
+        }
+
+        .product-info-label {
+            direction: rtl;
+            /*margin-top: 300px;*/
+            height: 10px;
+            font-size: 20px;
+            text-align: right;
+            color: white;
+            font-family: Doran, sans-serif;
+            font-weight: bolder;
+            /*width: 70vw;*/
+        }
+
+        .product-price-label {
+            direction: rtl;
+            /*margin-top: 300px;*/
+            height: 20px;
+            font-size: 20px;
+            text-align: right;
+            color: white;
+            font-family: Doran, sans-serif;
+            font-weight: bolder;
+            /*width: 70vw;*/
+        }
+
+        .product-price-row {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-info-text {
+            direction: rtl;
+            /*margin-top: 300px;*/
+            font-size: 20px;
+            text-align: right;
+            color: white;
+            margin-right: 10px;
+            font-family: Doran, sans-serif;
+            font-weight: normal;
+            /*width: 70vw;*/
+        }
+
+        .footer {
+            background-color: #33006b;
+            color: white;
+            height: 150px;
+            width: 100vw;
+            /*padding-right: 100px;*/
+            /*padding-left: 100px;*/
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 150px;
+            height: auto;
+            margin-left: 25px;
+        }
+
+        .footer-labels {
+            direction: rtl;
+            /*margin-top: 300px;*/
+            font-size: 15px;
+            text-align: right;
+            color: white;
+            font-family: Doran, sans-serif;
+            font-weight: bolder;
+            /*width: 70vw;*/
+        }
+
+        .social-img {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+
+        .footer-socials-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-left-col {
+            margin-right: 25px;
+        }
+
+        .purchase-button {
+            margin-top: 20px;
+            margin-right: 200px;
+            padding: 10px 20px;
+            color: #33006b;
+            font-family: Doran, sans-serif;
+            font-weight: bolder;
+            font-size: 20px;
+            border-radius: 5px;
+            background: #ff7d59;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .purchase-button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Card flip container styles */
+        .flip-card {
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 50vw;
+            height: 100%;
+            background-color: red;
+            text-align: center;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+        }
+
+        /* Position the front and back side */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden; /* Hide the back side when facing away */
+        }
+
+        /* Style the back side (form container) */
+        .flip-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* When the card is flipped, rotate it */
+        .flip-card.is-flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        #myForm {
+            width: calc(50vw - 50px);
+            max-width: 400px;
+            font-family: Doran, sans-serif;
+            border-radius: 10px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+        }
+
+        #myForm input {
+            width: calc(100% - 20px); /* Full width with padding adjustment */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd; /* Light grey border */
+            border-radius: 5px; /* Rounded borders */
+            direction: rtl;
+            font-family: Doran, sans-serif;
+        }
+
+        #myForm input[type="submit"] {
+            background-color: #ff7d59; /* Blue background for the submit button */
+            color: white;
+            border: none; /* No border for the submit button */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-family: Doran, sans-serif;
+            font-weight: 800;
+        }
+
+        #myForm input[type="submit"]:hover {
+            background-color: #fcac95; /* Slightly darker blue on hover */
+
+        }
+
+        #myForm input::placeholder {
+            color: #999; /* Light grey text for placeholders */
+            font-family: Doran, sans-serif;
+        }
+
+
+        /* Add your CSS for the logo and other elements here */
+        /* Use a web-safe font or import a custom Arabic typeface */
+    </style>
+</head>
+<body>
+
+<!-- Buttons -->
+<div class="button-row">
+    <a href="monhani.html" class="button">خانه</a>
+    <a href="#" class="button">ثبت سفارش</a>
+    <!--    <button class="button">Services</button>-->
+    <!--    <button class="button">Contact</button>-->
+</div>
+
+
+<!-- Page 1 -->
+<div class="container">
+    <!-- Flip card container -->
+    <div class="flip-card" id="flipCard">
+        <div class="flip-card-inner">
+            <!-- Front Side -->
+            <div class="flip-card-front product-info-col">
+                <!-- ... Your product information ... -->
+                <p class="product-info-brand">
+                    کرم آبرسان پوست خشک اوریاژ
+                </p>
+                <p class="product-info-label">حجم: <span class="product-info-text">۴۰ میلی لیتر</span></p>
+                <p class="product-info-label">انقضا: <span
+                        class="product-info-text">۱۲ ماه از باز شدن درب محصول</span></p>
+                <p class="product-info-label">محتویات: <span
+                        class="product-info-text"> آب چشمه های اوریاژ، شی باتر و …</span>
+                </p>
+                <p class="product-info-label">تایپ پوستی: <span class="product-info-text">خشک تا خیلی خشک</span>
+                </p>
+                <p class="product-info-label">کشور مبدا برند: <span class="product-info-text">فرانسه</span></p>
+                <div class="product-price-row">
+                    <p class="product-price-label">قیمت محصول: <span class="product-info-text">۹۸۹/۰۰۰ تومان</span></p>
+                    <!-- The button to toggle the form -->
+                    <button class="purchase-button" onclick="toggleForm()">خرید محصول</button>
+                </div>
+
+
+            </div>
+            <!-- Back Side -->
+            <div class="flip-card-back">
+                <!-- The form itself -->
+                <form id="myForm">
+                    <input type="text" placeholder="نام و نام خانوادگی" name="name"><br>
+                    <input type="phone" placeholder="تلفن همراه" name="phone"><br>
+                    <input type="province" placeholder="استان" name="province"><br>
+                    <input type="city" placeholder="شهر" name="city"><br>
+                    <input type="address" placeholder="آدرس" name="address"><br>
+                    <input type="zipcode" placeholder="کد پستی" name="postal"><br>
+                    <input type="text" placeholder="کد تخفیف" name="promotion"><br>
+                    <input type="submit" value="پرداخت">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="right-col">
+        <img class="product-img" src="product.png.webp" alt="product thumbnail"/>
+    </div>
+</div>
+
+
+<!-- The form itself -->
+<!--<div id="formContainer" class="hidden">-->
+<!--    <form id="myForm">-->
+<!--        &lt;!&ndash; Form fields &ndash;&gt;-->
+<!--        <input type="text" placeholder="نام و نام خانوادگی" name="name"><br>-->
+<!--        <input type="phone" placeholder="تلفن همراه" name="phone"><br>-->
+<!--        <input type="province" placeholder="استان" name="province"><br>-->
+<!--        <input type="city" placeholder="شهر" name="city"><br>-->
+<!--        <input type="address" placeholder="آدرس" name="address"><br>-->
+<!--        <input type="zipcode" placeholder="کد پستی" name="postal"><br>-->
+<!--        <input type="text" placeholder="کد تخفیف" name="promotion"><br>-->
+<!--        <input type="submit" value="ارسال">-->
+<!--    </form>-->
+<!--</div>-->
+
+
+<!-- Footer -->
+<!--<div class="footer">-->
+<!--    <div class="footer-left-col">-->
+<!--        <p class="footer-labels">منحنی در شبکه‌های اجتماعی:</p>-->
+<!--        <div class="footer-socials-row">-->
+<!--            <a href="https://t.me/MonhaniSupport">-->
+<!--                <img class="social-img" src="Monhani%20Graphic%20Assets/telegram.png" alt="telegram social media"/>-->
+<!--            </a>-->
+<!--            <a href="https://instagram.com/Monhani.beauty">-->
+<!--                <img class="social-img" src="Monhani%20Graphic%20Assets/instagram.png" alt="instagram social media"/>-->
+<!--            </a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <img class="footer-logo" src="Monhani%20Graphic%20Assets/Logo/Coral/PNG/Type@4x.png" alt="Logo">-->
+<!--</div>-->
+
+
+<!-- Form toggler -->
+<!--<script>-->
+<!--    function toggleForm() {-->
+<!--        var formContainer = document.getElementById('formContainer');-->
+<!--        if(formContainer.style.display === "none" || formContainer.style.display === "") {-->
+<!--            formContainer.style.display = "block";-->
+<!--        } else {-->
+<!--            formContainer.style.display = "none";-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+
+<script>
+    function toggleForm() {
+        document.getElementById('flipCard').classList.toggle('is-flipped');
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('myForm');
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            // Here you can add your own logic to handle the form data
+            // For example, validate the inputs
+            var name = form.elements['name'].value;
+            var phone = form.elements['phone'].value;
+            var province = form.elements['province'].value;
+            var city = form.elements['city'].value;
+            var address = form.elements['address'].value;
+            var postal = form.elements['postal'].value;
+            var promotion = form.elements['promotion'].value;
+
+            // Logging the values to the console for demonstration
+            console.log('Name:', name);
+            console.log('Phone:', phone);
+            console.log('Province:', province);
+            console.log('City:', city);
+            console.log('Address:', address);
+            console.log('Postal Code:', postal);
+            console.log('Promotion Code:', promotion);
+
+
+
+            let merchant_id = "3bca00b9-ff28-4abe-911d-fe8da1a8b956"
+            let amount = 10000
+            let metadata = {
+                "name": name,
+                "phone": phone,
+                "province": province,
+                "city": city,
+                "address": address,
+                "postal": postal,
+                "promotion": promotion,
+                "order_id": "0"
+            }
+
+            alert(metadata)
+
+            Promise.all([
+                // fetch("https://jsonplaceholder.typicode.com/todos/1"),
+                fetch("https://api.zarinpal.com/pg/v4/payment/request.json", {
+                    method: "POST",
+                    mode: 'cors',
+                    headers: {
+                        Accept: '*/*',
+                        'Origin': 'http://localhost',
+                        "Access-Control-Allow-Origin": true
+                    },
+                    body: {
+                        "merchant_id": merchant_id,
+                        "amount": amount,
+                        "callback_url": "https://www.varzesh3.com/",
+                        "description": "This is monhani product sale.",
+                        "metadata": metadata
+                    }
+                }),
+                // fetch("https://jsonplaceholder.typicode.com/todos/1")
+            ]).then(allResponses => {
+                const response1 = allResponses[0]
+                // const response2 = allResponses[1]
+                // const response3 = allResponses[2]
+                console.log("response1:", response1)
+                alert(response1)
+                // console.log("response2:", response2)
+                // console.log("response3:", response3)
+
+            })
+
+            // Optionally, you can submit the form programmatically if all validations pass
+            // form.submit();
+        });
+    });
+</script>
+
+
+</body>
+</html>
