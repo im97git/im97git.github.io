@@ -73,10 +73,10 @@
 
         document.handleMessageFromAppDocument('message', function (e) {
             handleMessageFromApp(e.data);
-        }, false);
+        });
         window.addEventListener('message', function (e) {
             handleMessageFromAppWindow(e.data);
-        }, false);
+        });
     </script>
 </head>
 <body>
