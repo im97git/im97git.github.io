@@ -20,6 +20,14 @@
             }
         }
 
+        function sendClearCacheRequestToApp() {
+            if (window.JsInterface) {
+                window.JsInterface.sendDataToApp("CLEARCACHEWEBVIEW:");
+            } else {
+                console.log('ReactNativeApp interface is not available.');
+            }
+        }
+
         function sendSSOOutRequestToApp() {
             if (window.JsInterface) {
                 window.JsInterface.sendDataToApp("SSOOUT:");
@@ -58,6 +66,7 @@
 <h1>WebView Test Page</h1>
 <button onclick="sendGetNotificationTokenAndAppRequestToApp()">Send GetNotificationTokenRequest to App</button>
 <button onclick="sendSSORequestToApp()">Send GetSSORequest to App</button>
+<button onclick="sendClearCacheRequestToApp()">Send ClearCacheRequest to App</button>
 <button onclick="sendSSOOutRequestToApp()">Send GetSSOOutRequest to App</button>
 <a href="parsiancryptoiosapp://">Open iOS App</a>
 <a href="parsiancryptoandroidapp://checkout_test_parameterwedewdewdwed">Open Android App</a>
