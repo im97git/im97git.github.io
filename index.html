@@ -11,7 +11,11 @@
                 console.log('ReactNativeApp interface is not available.');
             }
         }
-
+        
+        function sendGetNotificationTokenAndAppRequestToAppWithPost() {
+            window.ReactNativeWebView.postMessage("HEYGIMMIE");
+        }
+        
         function sendSSORequestToApp() {
             if (window.JsInterface) {
                 window.JsInterface.sendDataToApp("SSO:");
@@ -56,6 +60,7 @@
 </head>
 <body>
 <h1>WebView Test Page</h1>
+<button onclick="sendGetNotificationTokenAndAppRequestToAppWithPost()">Send GetNotificationTokenRequest to App</button>
 <button onclick="sendGetNotificationTokenAndAppRequestToApp()">Send GetNotificationTokenRequest to App</button>
 <button onclick="sendSSORequestToApp()">Send GetSSORequest to App</button>
 <button onclick="sendSSOOutRequestToApp()">Send GetSSOOutRequest to App</button>
