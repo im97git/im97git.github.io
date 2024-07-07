@@ -30,44 +30,27 @@
 
 
         // Handle messages from the React Native app
-        function handleMessageFromAppDocumentAndroid(message) {
+        function handleMessageFromApp(message) {
             console.log("Received from app:", message);
             if (message.slice(0, 16) === "ANDROIDFCMTOKEN/") {
                 // Case of Android version with fcm token attached after / accessible with message.slice(16)
-                alert("ANDROID"+message)
+                alert(message)
             } else if (message.slice(0, 12) === "IOSFCMTOKEN/") {
                 // Case of iOS version with fcm token attached after / accessible with message.slice(12)
-                alert("ANDROID"+message)
+                alert(message)
             } else if (message.slice(0, 11) === "SSOIDTOKEN/") {
                 // Case of iOS version with fcm token attached after / accessible with message.slice(12)
-                alert("ANDROID"+message)
+                alert(message)
             } else {
-                alert("ANDROID"+message)
+                alert(message)
             }
         }
 
-        // Handle messages from the React Native app
-        function handleMessageFromAppWindowIOS(message) {
-            console.log("Received from app:", message);
-            if (message.slice(0, 16) === "ANDROIDFCMTOKEN/") {
-                // Case of Android version with fcm token attached after / accessible with message.slice(16)
-                alert("IOS"+message)
-            } else if (message.slice(0, 12) === "IOSFCMTOKEN/") {
-                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
-                alert("IOS"+message)
-            } else if (message.slice(0, 11) === "SSOIDTOKEN/") {
-                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
-                alert("IOS"+message)
-            } else {
-                alert("IOS"+message)
-            }
-        }
-
-        document.addEventListener('message', function (e) {
-            handleMessageFromAppDocumentAndroid(e.data);
-        });
+        // document.addEventListener('message', function (e) {
+        //     handleMessageFromApp(e.data);
+        // });
         window.addEventListener('message', function (e) {
-            handleMessageFromAppWindowIOS(e.data);
+            handleMessageFromApp(e.data);
         });
     </script>
 </head>
