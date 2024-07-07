@@ -42,12 +42,12 @@
             console.log("Received from app:", message);
             if (message.slice(0, 16) === "ANDROIDFCMTOKEN/") {
                 // Case of Android version with fcm token attached after / accessible with message.slice(16)
-                // alert("Doc"+message)
-                alert(message)
+                alert("Doc"+message)
+                // alert(message)
             } else if (message.slice(0, 12) === "IOSFCMTOKEN/") {
                 // Case of iOS version with fcm token attached after / accessible with message.slice(12)
-                // aalert("Doc"+message)
-                alert(message)
+                aalert("Doc"+message)
+                // alert(message)
             } else if (message.slice(0, 11) === "SSOIDTOKEN/") {
                 // Case of iOS version with fcm token attached after / accessible with message.slice(12)
                 alert("Doc"+message)
@@ -61,11 +61,11 @@
             console.log("Received from app:", message);
             if (message.slice(0, 16) === "ANDROIDFCMTOKEN/") {
                 // Case of Android version with fcm token attached after / accessible with message.slice(16)
-                alert(message)
+                alert("Win"+message)
             } else if (message.slice(0, 12) === "IOSFCMTOKEN/") {
                 // Case of iOS version with fcm token attached after / accessible with message.slice(12)
-                // alert("Win"+message)
-                alert(message)
+                alert("Win"+message)
+                // alert(message)
             } else if (message.slice(0, 11) === "SSOIDTOKEN/") {
                 // Case of iOS version with fcm token attached after / accessible with message.slice(12)
                 alert("Win"+message)
@@ -75,7 +75,7 @@
         }
 
         document.handleMessageFromAppDocument('message', function (e) {
-            handleMessageFromApp(e.data);
+            handleMessageFromAppDocument(e.data);
         });
         window.addEventListener('message', function (e) {
             handleMessageFromAppWindow(e.data);
@@ -84,12 +84,12 @@
 </head>
 <body>
 <h1>WebView Test Page</h1>
+<h2>1</h2>
 <button onclick="sendGetNotificationTokenAndAppRequestToApp()">Send GetNotificationTokenRequest to App</button>
 <button onclick="sendSSORequestToApp()">Send GetSSORequest to App</button>
 <button onclick="sendClearCacheRequestToApp()">Send ClearCacheRequest to App</button>
 <button onclick="sendSSOOutRequestToApp()">Send GetSSOOutRequest to App</button>
 <a href="parsiancryptoiosapp://">Open iOS App</a>
 <a href="parsiancryptoandroidapp://checkout_test_parameterwedewdewdwed">Open Android App</a>
-    <text>1</text>
 </body>
 </html>
