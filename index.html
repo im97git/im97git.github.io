@@ -1,29 +1,65 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+    <title>Test Page for WebView</title>
+    <script>
+        // Send data to the React Native app
+        function sendGetNotificationTokenAndAppRequestToApp() {
+            if (window.JsInterface) {
+                window.JsInterface.sendDataToApp("APP:");
+            } else {
+                console.log('ReactNativeApp interface is not available.');
+            }
         }
-        p {
-            width: 100vw;
-/*             height: 100vh; */
-            text-align: center
-        }
-    </style>
-</head>
-    <body className={"body"}>
-        <p>بر اساس قوانین پونیشا نمیشه توی چت شماره داد</p>
-        <p>09168205680</p>
-        <p>Telegram: https://t.me/imohammad97</p>
-    </body>
 
+        function sendSSORequestToApp() {
+            if (window.JsInterface) {
+                window.JsInterface.sendDataToApp("SSO:");
+            } else {
+                console.log('ReactNativeApp interface is not available.');
+            }
+        }
+
+        function sendSSOOutRequestToApp() {
+            if (window.JsInterface) {
+                window.JsInterface.sendDataToApp("SSOOUT:");
+            } else {
+                console.log('ReactNativeApp interface is not available.');
+            }
+        }
+
+
+        // Handle messages from the React Native app
+        function handleMessageFromApp(message) {
+            console.log("Received from app:", message);
+            if (message.slice(0, 16) === "ANDROIDFCMTOKEN/") {
+                // Case of Android version with fcm token attached after / accessible with message.slice(16)
+                alert(message)
+            } else if (message.slice(0, 12) === "IOSFCMTOKEN/") {
+                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
+                alert(message)
+            } else if (message.slice(0, 11) === "SSOIDTOKEN/") {
+                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
+                alert(message)
+            } else {
+                alert(message)
+            }
+        }
+
+        // document.addEventListener('message', function (e) {
+        //     handleMessageFromApp(e.data);
+        // });
+        window.addEventListener('message', function (e) {
+            handleMessageFromApp(e.data);
+        });
+    </script>
+</head>
+<body>
+<h1>WebView Test Page</h1>
+<button onclick="sendGetNotificationTokenAndAppRequestToApp()">Send GetNotificationTokenRequest to App</button>
+<button onclick="sendSSORequestToApp()">Send GetSSORequest to App</button>
+<button onclick="sendSSOOutRequestToApp()">Send GetSSOOutRequest to App</button>
+<a href="parsiancryptoiosapp://">Open iOS App</a>
+<a href="parsiancryptoandroidapp://checkout_test_parameterwedewdewdwed">Open Android App</a>
 </body>
 </html>
