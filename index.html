@@ -7,6 +7,14 @@
         function testAlert() {
             alert("Alert is working")
         }
+
+        function requestTestFromApp() {
+            if (window.JsInterface) {
+                window.JsInterface.sendDataToApp("TEST:");
+            } else {
+                console.log('ReactNativeApp interface is not available.');
+            }
+        }
         
         // Send data to the React Native app
         function sendGetNotificationTokenAndAppRequestToApp() {
@@ -90,7 +98,7 @@
 <body>
 <h1>WebView Test Page</h1>
 <h2>1</h2>
-    
+<button onclick="requestTestFromApp()">Send testRequest to App</button>
 <button onclick="testAlert()">Send testAlert to App</button>
 <button onclick="sendGetNotificationTokenAndAppRequestToApp()">Send GetNotificationTokenRequest to App</button>
 <button onclick="sendSSORequestToApp()">Send GetSSORequest to App</button>
