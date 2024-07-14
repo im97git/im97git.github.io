@@ -3,6 +3,11 @@
 <head>
     <title>Test Page for WebView</title>
     <script>
+
+        function testAlert() {
+            alert("Alert is working")
+        }
+        
         // Send data to the React Native app
         function sendGetNotificationTokenAndAppRequestToApp() {
             if (window.JsInterface) {
@@ -85,6 +90,8 @@
 <body>
 <h1>WebView Test Page</h1>
 <h2>1</h2>
+    
+<button onclick="testAlert()">Send testAlert to App</button>
 <button onclick="sendGetNotificationTokenAndAppRequestToApp()">Send GetNotificationTokenRequest to App</button>
 <button onclick="sendSSORequestToApp()">Send GetSSORequest to App</button>
 <button onclick="sendClearCacheRequestToApp()">Send ClearCacheRequest to App</button>
