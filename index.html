@@ -3,19 +3,6 @@
 <head>
     <title>Test Page for WebView</title>
     <script>
-
-        function testAlert() {
-            alert("Alert is working")
-        }
-
-        function requestTestFromApp() {
-            if (window.JsInterface) {
-                window.JsInterface.sendDataToApp("TEST:");
-            } else {
-                console.log('ReactNativeApp interface is not available.');
-            }
-        }
-        
         // Send data to the React Native app
         function sendGetNotificationTokenAndAppRequestToApp() {
             if (window.JsInterface) {
@@ -24,10 +11,10 @@
                 console.log('ReactNativeApp interface is not available.');
             }
         }
-    
-        function sendSSORequestToApp() {
+
+        function sendDeviceInfoRequestToApp() {
             if (window.JsInterface) {
-                window.JsInterface.sendDataToApp("SSO:");
+                window.JsInterface.sendDataToApp("GETDEVICEINFO:");
             } else {
                 console.log('ReactNativeApp interface is not available.');
             }
@@ -41,9 +28,26 @@
             }
         }
 
-        function sendSSOOutRequestToApp() {
+        function sendGetLocationRequestToApp() {
             if (window.JsInterface) {
-                window.JsInterface.sendDataToApp("SSOOUT:");
+                window.JsInterface.sendDataToApp("GETLOCATION:");
+            } else {
+                console.log('ReactNativeApp interface is not available.');
+            }
+        }
+
+        function sendSetClipboardRequestToApp() {
+            // Temporarily deactive due to conflict problems
+            if (window.JsInterface) {
+                window.JsInterface.sendDataToApp("COPYTOCLIPBOARD:text_to_be_copied");
+            } else {
+                console.log('ReactNativeApp interface is not available.');
+            }
+        }
+
+        function sendGetAppVersionRequestToApp() {
+            if (window.JsInterface) {
+                window.JsInterface.sendDataToApp("GETAPPVERSION:");
             } else {
                 console.log('ReactNativeApp interface is not available.');
             }
@@ -54,15 +58,16 @@
         function handleMessageFromAppDocument(message) {
             console.log("Received from app:", message);
             if (message.slice(0, 16) === "ANDROIDFCMTOKEN/") {
-                // Case of Android version with fcm token attached after / accessible with message.slice(16)
                 alert("Doc"+message)
-                // alert(message)
             } else if (message.slice(0, 12) === "IOSFCMTOKEN/") {
-                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
                 aalert("Doc"+message)
-                // alert(message)
-            } else if (message.slice(0, 11) === "SSOIDTOKEN/") {
-                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
+            } else if (message.slice(0, 14) === "GETDEVICEINFO/") {
+                alert("Doc"+message)
+            } else if (message.slice(0, 14) === "GETAPPVERSION/") {
+                alert("Doc"+message)
+            } else if (message.slice(0, 12) === "GETLOCATION/") {
+                alert("Doc"+message)
+            } else if (message.slice(0, 13) === "CACHECLEARED/") {
                 alert("Doc"+message)
             } else {
                 alert("Doc"+message)
@@ -73,14 +78,16 @@
         function handleMessageFromAppWindow(message) {
             console.log("Received from app:", message);
             if (message.slice(0, 16) === "ANDROIDFCMTOKEN/") {
-                // Case of Android version with fcm token attached after / accessible with message.slice(16)
                 alert("Win"+message)
             } else if (message.slice(0, 12) === "IOSFCMTOKEN/") {
-                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
                 alert("Win"+message)
-                // alert(message)
-            } else if (message.slice(0, 11) === "SSOIDTOKEN/") {
-                // Case of iOS version with fcm token attached after / accessible with message.slice(12)
+            } else if (message.slice(0, 14) === "GETDEVICEINFO/") {
+                alert("Win"+message)
+            } else if (message.slice(0, 14) === "GETAPPVERSION/") {
+                alert("Win"+message)
+            } else if (message.slice(0, 12) === "GETLOCATION/") {
+                alert("Win"+message)
+            } else if (message.slice(0, 13) === "CACHECLEARED/") {
                 alert("Win"+message)
             } else {
                 alert("Win"+message)
@@ -98,13 +105,15 @@
 <body>
 <h1>WebView Test Page</h1>
 <h2>1</h2>
-<button onclick="requestTestFromApp()">Send testRequest to App</button>
-<button onclick="testAlert()">Send testAlert to App</button>
 <button onclick="sendGetNotificationTokenAndAppRequestToApp()">Send GetNotificationTokenRequest to App</button>
-<button onclick="sendSSORequestToApp()">Send GetSSORequest to App</button>
+<button onclick="sendDeviceInfoRequestToApp()">Send GetDeviceInfoRequest to App</button>
 <button onclick="sendClearCacheRequestToApp()">Send ClearCacheRequest to App</button>
-<button onclick="sendSSOOutRequestToApp()">Send GetSSOOutRequest to App</button>
-<a href="parsiancryptoiosapp://">Open iOS App</a>
-<a href="parsiancryptoandroidapp://checkout_test_parameterwedewdewdwed">Open Android App</a>
+<button onclick="sendGetLocationRequestToApp()">Send GetLocationRequest to App</button>
+<button onclick="sendSetClipboardRequestToApp()">Send SetClipboardRequest to App</button>
+<button onclick="sendGetAppVersionRequestToApp()">Send GetAppVersionRequest to App</button>
+<br/>
+<a href="mofidioswrapper://checkout_test_parameters_will_be_concatanated_to_the_mainsite_url_and_rerender">Open iOS App</a>
+<br/>
+<a href="mofidandroidwrapper://checkout_test_parameters_will_be_concatanated_to_the_mainsite_url_and_rerender">Open Android App</a>
 </body>
 </html>
